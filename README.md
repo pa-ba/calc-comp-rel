@@ -37,7 +37,8 @@ In addition we also include calculations for the following languages:
 
 
  - [HuttonWright.v](HuttonWright.v): Hutton & Wright's language with
-   interrupts but using the same VM as in Hutton & Wright's paper
+   interrupts but using the compiler and VM from Hutton & Wright's
+   paper
  - [StateGlobal.v](StateGlobal.v): language with interrupts and global
    state
  - [StateLocal.v](StateLocal.v): language with interrupts and local

@@ -1,5 +1,5 @@
-(* Calculation for a language with interrupts (using the same VM as
-Hutton and Wright). *)
+(* Calculation for a language with interrupts (using the same compiler
+and VM as Hutton and Wright). *)
 
 Require Import List.
 Require Import Tactics.
@@ -42,7 +42,7 @@ Fixpoint comp' (e : Expr) (c : Code) : Code :=
   match e with
     | Val n => PUSH n :: c
     | Add x y => comp' x (comp' y (ADD :: c))
-    | Throw => [THROW]
+    | Throw => THROW :: c
     | Catch e1 e2 => MARK (comp' e2 c) :: comp' e1 (UNMARK :: c)
     | Seqn e1 e2 => comp' e1 (POP :: comp' e2 c)
     | Block e => SET B :: comp' e (RESET :: c)
@@ -152,7 +152,7 @@ Proof.
   = {by_eval}
     ({ s i , ⟪s, i⟫ | P s i}).
   <== {apply vm_throw}
-    ({ s i , ⟨[THROW], s, i⟩ | P s i}).
+    ({ s i , ⟨THROW :: c, s, i⟩ | P s i}).
   [].
 
   begin
