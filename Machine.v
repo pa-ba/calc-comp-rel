@@ -45,11 +45,10 @@ Proof.
   induction S; eauto. rewrite <- clos_rt_rt1n_iff in S. eauto.
 Qed.
 
-
 Fixpoint tuple (ts : list Type) : Type :=
   match ts with
-    | nil => unit
-    | t :: ts' => prod t (tuple ts')
+    | []       => unit
+    | t :: ts' => (t * tuple ts')%type
   end.
 
 
@@ -71,19 +70,15 @@ Fixpoint mkSetCom {ts} (C : tuple ts -> Conf) (P : tuple ts -> Prop) : SetCom ts
 
 
 Fixpoint getConf {ts} (S : SetCom ts) : tuple ts -> Conf :=
-  match S in SetCom ts return tuple ts -> Conf with
+  match S with
     | BaseSet C P => fun xs => C
-    | ExSet _ _ ex => fun xs => match xs with
-                              | (x, xs') =>  getConf (ex x) xs'
-                            end
+    | ExSet _ _ ex => fun xs =>  let (x, xs') := xs in  getConf (ex x) xs'
   end.
 
 Fixpoint getProp {ts} (S : SetCom ts) : tuple ts -> Prop :=
-  match S in SetCom ts return tuple ts -> Prop with
+  match S with
     | BaseSet C P => fun xs => P
-    | ExSet _ _ ex => fun xs => match xs with
-                              | (x, xs') =>  getProp (ex x) xs'
-                            end
+    | ExSet _ _ ex => fun xs => let (x, xs') := xs in getProp (ex x) xs'
   end.
 
 Lemma getConf_sound ts (C : tuple ts -> Conf) P x : getConf (mkSetCom C P) x = C x.
