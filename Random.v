@@ -37,6 +37,8 @@ Definition comp (e : Expr) : Code := comp' e nil.
 Example comp_ex : comp (Add (Rnd (Val 5)) (Val 42)) = [PUSH 5; RND; PUSH 42; ADD].
 reflexivity. Qed.
 
+Example comp_ex2 : comp (Rnd (Val 0)) = [PUSH 0; RND].
+reflexivity. Qed.
 
 Definition Stack : Set := list Z.
 
