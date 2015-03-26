@@ -13,10 +13,10 @@ underlying calculation framework that is used by the calculation.
 The Coq proofs proceed as the calculations in the paper. There is
 however, one minor technical difference due to the nature of the Coq
 system. The Coq files contain the final result of the calculation, and
-thus do not reflect the /process/ of discovering the definition of the
+thus do not reflect the *process* of discovering the definition of the
 compiler and the VM. That is, the files already contain the full
 definitions of the compiler and the virtual machine. But we used the
-same methodology as described in the paper to /develop/ the Coq
+same methodology as described in the paper to *develop* the Coq
 proofs. This is achieved by initially defining the Code data type as
 an empty type, defining the VM relation as an empty relation
 (i.e. with no rules), and defining the compiler function using the
