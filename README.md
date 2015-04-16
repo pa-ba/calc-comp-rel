@@ -9,6 +9,8 @@ formalisations for calculations that were mentioned but not explicitly
 carried out in the paper. The Coq development also proves the
 underlying calculation framework that is used by the calculation.
 
+Paper vs. Coq Proofs
+--------------------
 
 The Coq proofs proceed as the calculations in the paper. There is
 however, one minor technical difference due to the nature of the Coq
@@ -24,6 +26,9 @@ term "Admit". This setup then allows us to calculate the definition of
 the Code data type, the VM, and the compiler as described in the
 paper. Alternatively, the calculations can also be read as a post hoc
 verification of a given compiler.
+
+File Structure
+--------------
 
 Below we list the relevant Coq files for the calculations in the
 paper:
@@ -53,3 +58,20 @@ do not use this formalisation directly, but instead invoke the proof
 tactics defined in [Tactics.v](Tactics.v). These tactics allow us to
 write the proofs in the calculational style that is presented in the
 paper.
+
+Technical Details
+-----------------
+
+### Dependencies
+
+- To check the proofs: Coq 8.4pl5
+- To step through the proofs: GNU Emacs 24.3.1, Proof General 4.2
+
+### Proof Checking
+
+To check and compile the complete Coq development, you can use the
+`Makefile`:
+
+```shell
+> make
+```
