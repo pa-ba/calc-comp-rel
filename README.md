@@ -1,5 +1,5 @@
-Calculating Certified Compilers for Non-Deterministic Languages
-===============================================================
+# Calculating Certified Compilers for Non-Deterministic Languages [![Build Status](https://travis-ci.org/pa-ba/calc-comp-rel.svg?branch=master)](https://travis-ci.org/pa-ba/calc-comp-rel)
+
 
 This repository contains the supplementary material for the paper
 ["Calculating Certified Compilers for Non-Deterministic Languages"](http://www.diku.dk/~paba/pubs/files/bahr15mpc-preprint.pdf)
